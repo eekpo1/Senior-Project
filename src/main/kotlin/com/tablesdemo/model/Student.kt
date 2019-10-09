@@ -10,4 +10,7 @@ class Student(@Id @GeneratedValue(strategy = GenerationType.AUTO) val id: Long =
     @ManyToMany(fetch = FetchType.LAZY, cascade = [CascadeType.PERSIST, CascadeType.MERGE], mappedBy = "roster")
     lateinit var coursesIn: Set<Course>
 
+//    @OneToOne
+//    lateinit var userId: User
+
 }
