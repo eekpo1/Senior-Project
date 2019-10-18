@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository
 
 @Repository
 @RepositoryRestResource
-interface StudentRepository : JpaRepository<Student, Long>
+interface StudentRepository : JpaRepository<Student, Long> {
+    fun findByFirstName(firstName: String)
+}
