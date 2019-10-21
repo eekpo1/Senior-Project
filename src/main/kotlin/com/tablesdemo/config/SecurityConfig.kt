@@ -1,7 +1,6 @@
 package com.tablesdemo.config
 
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
@@ -11,7 +10,6 @@ import org.springframework.security.core.userdetails.User
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.crypto.factory.PasswordEncoderFactories
 import org.springframework.security.crypto.password.PasswordEncoder
-import org.thymeleaf.spring5.SpringTemplateEngine
 import javax.sql.DataSource
 
 @Configuration
@@ -39,13 +37,13 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
 //        return InMemoryUserDetailsManager(admin, user, instructor)
 //    }
 
-    @Bean
-    fun templateEngine(): SpringTemplateEngine {
-    TODO("Need to figure out the springsecurity5 issue")
+//  @Bean
+//    fun templateEngine(): SpringTemplateEngine {
+//    TODO("Need to figure out the springsecurity5 issue")
 //        val templateEngine = SpringTemplateEngine()
-//        templateEngine.setAdditionalDialects(org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect)
+//        templateEngine.setAdditionalDialects()
 //        return templateEngine
-    }
+//    }
 
     @Autowired
     fun configureGlobal(authenticationManagerBuilder: AuthenticationManagerBuilder) {
@@ -60,6 +58,8 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
         val instructor: UserDetails = User.builder()
                 .username("instructor").password(encoder.encode("passw0rd"))
                 .roles("INSTRUCTOR").build()
+
+
 
         authenticationManagerBuilder.jdbcAuthentication().dataSource(dataSource).passwordEncoder(encoder)
                 .withUser(admin).withUser(user).withUser(instructor)
@@ -82,7 +82,7 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
         http!!.authorizeRequests()
                 .mvcMatchers( "/api/**").hasRole("ADMIN").anyRequest().authenticated()
                 .mvcMatchers("/", "/resources/**", "/index").permitAll()
-                .and().formLogin().loginPage("/login-page.html").defaultSuccessUrl("/api").failureUrl("/login-error.html").permitAll()
+                .and().formLogin().loginPage("/login-page.html").defaultSuccessUrl("/courseview.html", true).failureUrl("/login-error.html").permitAll()
                 .and().httpBasic()
 
         http.csrf().disable()

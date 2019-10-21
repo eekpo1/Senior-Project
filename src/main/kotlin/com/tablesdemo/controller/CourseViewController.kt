@@ -9,4 +9,6 @@ class CourseViewController {
     @RequestMapping("/courseview.html")
     fun courseView(): String = "courseview"
 
+
+
 }
