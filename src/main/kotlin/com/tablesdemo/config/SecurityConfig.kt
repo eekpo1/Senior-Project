@@ -1,6 +1,7 @@
 package com.tablesdemo.config
 
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
@@ -10,6 +11,7 @@ import org.springframework.security.core.userdetails.User
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.crypto.factory.PasswordEncoderFactories
 import org.springframework.security.crypto.password.PasswordEncoder
+import org.thymeleaf.spring5.SpringTemplateEngine
 import javax.sql.DataSource
 
 @Configuration
@@ -36,6 +38,14 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
 //                .roles("INSTRUCTOR").build()
 //        return InMemoryUserDetailsManager(admin, user, instructor)
 //    }
+
+    @Bean
+    fun templateEngine(): SpringTemplateEngine {
+    TODO("Need to figure out the springsecurity5 issue")
+//        val templateEngine = SpringTemplateEngine()
+//        templateEngine.setAdditionalDialects(org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect)
+//        return templateEngine
+    }
 
     @Autowired
     fun configureGlobal(authenticationManagerBuilder: AuthenticationManagerBuilder) {

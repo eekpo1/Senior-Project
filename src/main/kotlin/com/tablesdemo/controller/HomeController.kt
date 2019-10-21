@@ -4,9 +4,9 @@ import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.RequestMapping
 
 @Controller
-class PhomeController {
+class HomeController {
 
-    @RequestMapping("/phome.html")
-    fun phome(): String = "phome"
+    @RequestMapping("/home.html")
+    fun home(): String = "home"
 
 }
