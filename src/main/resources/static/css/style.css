@@ -1,3 +1,21 @@
 footer {
     font-size: 10px;
 }
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+.box {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+
+#mainBody {
+    /*background-image: url("../images/csublogo2.png");*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: contain;*/
+    height: 100%;
+}
