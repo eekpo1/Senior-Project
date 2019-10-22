@@ -82,7 +82,7 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
         http!!.authorizeRequests()
                 .mvcMatchers( "/api/**").hasRole("ADMIN").anyRequest().authenticated()
                 .mvcMatchers("/", "/resources/**", "/index").permitAll()
-                .and().formLogin().loginPage("/login-page.html").defaultSuccessUrl("/courseview.html", true).failureUrl("/login-error.html").permitAll()
+                .and().formLogin().loginPage("/login-page.html").defaultSuccessUrl("/home.html", true).failureUrl("/login-error.html").permitAll()
                 .and().httpBasic()
 
         http.csrf().disable()
