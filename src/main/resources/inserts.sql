@@ -1,12 +1,12 @@
 CREATE DATABASE SeniorProject;
 
 CREATE TABLE IF NOT EXISTS Admin (
-    adminID int NOT NULL AUTO_INCREMENT,
-    fName varchar(255),
-    lName varchar(255),
-    loginID varchar(255),
-    adminPassword varchar(255),
-    roleType int,
+    adminID int NOT NULL,
+    fName varchar(255) NOT NULL,
+    lName varchar(255) NOT NULL,
+    loginID varchar(255) NOT NULL,
+    adminPassword varchar(255) NOT NULL,
+    roleType int NOT NULL,
     PRIMARY KEY (adminID)
 );
 
@@ -20,11 +20,11 @@ SELECT * FROM Admin;
 -- +---------+----------+-------+---------+---------------+----------+
 
 CREATE TABLE IF NOT EXISTS Student (
-    studentID int NOT NULL AUTO_INCREMENT,
-    fName varchar(255),
-    lName varchar(255),
-    loginID varchar(255),
-    studentPassword varchar(255),
+    studentID int NOT NULL,
+    fName varchar(255) NOT NULL,
+    lName varchar(255) NOT NULL,
+    loginID varchar(255) NOT NULL,
+    studentPassword varchar(255) NOT NULL,
     PRIMARY KEY (studentID)
 );
 
