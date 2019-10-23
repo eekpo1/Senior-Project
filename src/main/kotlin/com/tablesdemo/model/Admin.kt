@@ -1,5 +1,7 @@
 package com.tablesdemo.model
 
+import org.springframework.security.crypto.factory.PasswordEncoderFactories
+import org.springframework.security.crypto.password.PasswordEncoder
 import javax.persistence.*
 
 
@@ -14,6 +16,8 @@ class Admin(@Id @GeneratedValue(strategy = GenerationType.AUTO) val id: Long, va
     @PostPersist
     @PostUpdate
     fun onPersist(): Unit {
+        val encoder: PasswordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder()
+        password = encoder.encode(password)
 
     }
 }

@@ -78,9 +78,10 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
         http!!.authorizeRequests()
                 .mvcMatchers( "/api/**").hasRole("ADMIN").anyRequest().authenticated()
                 .mvcMatchers("/", "/index").permitAll()
-                .and().formLogin().loginPage("/login-page.html").defaultSuccessUrl("/home.html", true).failureUrl("/login-error.html").permitAll()
-                .and().logout().logoutSuccessUrl("/login-page.html")
-                .and().httpBasic()
+                .and().formLogin().loginPage("/login-page.html").defaultSuccessUrl("/home.html", true).permitAll(true)
+                .and().logout().clearAuthentication(true).logoutSuccessUrl("/login-page.html").deleteCookies("JSESSIONID")
+                .invalidateHttpSession(true).permitAll()
+//                .and().httpBasic()
 
         http.csrf().disable()
         http.headers().frameOptions().disable()
