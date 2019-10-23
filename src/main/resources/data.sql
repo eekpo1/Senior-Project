@@ -1,12 +1,22 @@
--- Hibernate: create table admin (id bigint not null, f_name varchar(255), l_name varchar(255), login varchar(255), password varchar(255), primary key (id))
--- Hibernate: create table authorities (username varchar(255) not null, authority varchar(255) not null, primary key (username))
--- Hibernate: create table course (id bigint not null, name varchar(255), section varchar(255), last_update date, location varchar(255), updated boolean not null, instructor bigint, primary key (id))
--- Hibernate: create table student (id bigint not null, first_name varchar(255), last_name varchar(255), primary key (id))
--- Hibernate: create table students_in (student_id bigint not null, course_id bigint not null, primary key (student_id, course_id))
--- Hibernate: create table users (username varchar(64) not null, enabled boolean not null, password varchar(255), primary key (username))
--- Hibernate: alter table course add constraint FKhat9ro0heltc6e8bqwqfc0vu4 foreign key (instructor) references admin
--- Hibernate: alter table students_in add constraint FKsg965011hvpxytafbq5ufa5r8 foreign key (course_id) references student
--- Hibernate: alter table students_in add constraint FKr8lh42ilyyf9sf1swm1qtrfgd foreign key (student_id) references course
+insert into STUDENT (ID, FIRST_NAME, LAST_NAME) values (1, 'Eddie', 'Ekpo');
+INSERT INTO ADMIN (ID, FIRST_NAME, LAST_NAME, LOGIN, PASSWORD) VALUES (1, 'Chengwei', 'Lei', 'clei', 'password1' )
+-- Hibernate: drop table admin if exists
+-- Hibernate: drop table authorities if exists
+-- Hibernate: drop table course if exists
+-- Hibernate: drop table student if exists
+-- Hibernate: drop table students_in if exists
+-- Hibernate: drop table users if exists
+-- Hibernate: drop sequence if exists hibernate_sequence
+--     Hibernate: create sequence hibernate_sequence start with 1 increment by 1
+--     Hibernate: create table admin (id bigint not null, first_name varchar(255), last_name varchar(255), login varchar(255), password varchar(255), primary key (id))
+--     Hibernate: create table authorities (username varchar(255) not null, authority varchar(255) not null, primary key (username))
+--     Hibernate: create table course (id bigint not null, name varchar(255), section varchar(255), last_update date, location varchar(255), updated boolean not null, instructor bigint, primary key (id))
+--     Hibernate: create table student (id bigint not null, first_name varchar(255), last_name varchar(255), primary key (id))
+--     Hibernate: create table students_in (student_id bigint not null, course_id bigint not null, primary key (student_id, course_id))
+--     Hibernate: create table users (username varchar(64) not null, enabled boolean not null, password varchar(255), primary key (username))
+--     Hibernate: alter table course add constraint FKhat9ro0heltc6e8bqwqfc0vu4 foreign key (instructor) references admin
+--     Hibernate: alter table students_in add constraint FKsg965011hvpxytafbq5ufa5r8 foreign key (course_id) references student
+--     Hibernate: alter table students_in add constraint FKr8lh42ilyyf9sf1swm1qtrfgd foreign key (student_id) references course
 
 
 -- CREATE DATABASE SeniorProject;
@@ -20,7 +30,7 @@
 --     roleType int NOT NULL,
 --     PRIMARY KEY (adminID)
 -- );
-INSERT INTO Admin (fName, lName, login, password) VALUES ("Chengwei", "Lei", "clei", "password1", null );
+-- INSERT INTO Admin (first_name, last_name, login, password) VALUES ("Chengwei", "Lei", "clei", "password1", null );
 
 -- SELECT * FROM Admin;
 -- +---------+----------+-------+---------+---------------+----------+

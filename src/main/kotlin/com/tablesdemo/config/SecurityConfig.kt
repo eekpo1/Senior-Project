@@ -37,13 +37,6 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
 //        return InMemoryUserDetailsManager(admin, user, instructor)
 //    }
 
-//  @Bean
-//    fun templateEngine(): SpringTemplateEngine {
-//    TODO("Need to figure out the springsecurity5 issue")
-//        val templateEngine = SpringTemplateEngine()
-//        templateEngine.setAdditionalDialects()
-//        return templateEngine
-//    }
 
     @Autowired
     fun configureGlobal(authenticationManagerBuilder: AuthenticationManagerBuilder) {
@@ -59,13 +52,15 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
                 .username("instructor").password(encoder.encode("passw0rd"))
                 .roles("INSTRUCTOR").build()
 
-        val clei: UserDetails = User.builder().username("clei").password(encoder.encode("password1"))
-                .roles("ADMIN").build()
+//        val clei: UserDetails = User.builder().username("clei").password(encoder.encode("password1"))
+//                .roles("ADMIN").build()
 
         authenticationManagerBuilder.jdbcAuthentication().dataSource(dataSource).passwordEncoder(encoder)
-                .withUser(admin).withUser(user).withUser(instructor).withUser(clei)
+                .withUser(admin).withUser(user).withUser(instructor)
 //                .usersByUsernameQuery("SELECT username, password, enabled FROM users WHERE username=?")
 //                .authoritiesByUsernameQuery("SELECT username, role FROM users WHERE username=?")
+
+
 
     }
 
