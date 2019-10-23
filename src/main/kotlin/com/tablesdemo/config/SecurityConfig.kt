@@ -76,7 +76,7 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
 ////                .and().httpBasic()
 
         http!!.authorizeRequests()
-                .mvcMatchers( "/api/**").hasRole("ADMIN").anyRequest().authenticated()
+                .mvcMatchers( "/api/**", "db").hasRole("ADMIN").anyRequest().authenticated()
                 .mvcMatchers("/", "/index").permitAll()
                 .and().formLogin().loginPage("/login-page.html").defaultSuccessUrl("/home.html", true).permitAll(true)
                 .and().logout().clearAuthentication(true).logoutSuccessUrl("/login-page.html").deleteCookies("JSESSIONID")

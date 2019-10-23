@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository
 
 @Repository
 @RepositoryRestResource
-interface AdminRepository : JpaRepository<Admin, Long>
+interface AdminRepository : JpaRepository<Admin, Long> {
+    fun findByUsername(login: String): Admin
+}

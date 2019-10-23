@@ -1,5 +1,6 @@
 insert into STUDENT (ID, FIRST_NAME, LAST_NAME) values (1, 'Eddie', 'Ekpo');
-INSERT INTO ADMIN (ID, FIRST_NAME, LAST_NAME, LOGIN, PASSWORD) VALUES (1, 'Chengwei', 'Lei', 'clei', 'password1' )
+INSERT INTO ADMIN (ID, FIRST_NAME, LAST_NAME, USERNAME, SCHOOL_ID) VALUES (null, 'Chengwei', 'Lei', 'clei', 123 );
+INSERT INTO ADMIN(ID, FIRST_NAME, LAST_NAME, USERNAME, SCHOOL_ID) VALUES (null, 'Melissa', 'Danforth', 'mdanforth', 125);
 -- Hibernate: drop table admin if exists
 -- Hibernate: drop table authorities if exists
 -- Hibernate: drop table course if exists

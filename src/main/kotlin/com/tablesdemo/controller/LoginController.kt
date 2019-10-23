@@ -1,7 +1,9 @@
 package com.tablesdemo.controller
 
 
+import com.tablesdemo.repository.AdminRepository
 import com.tablesdemo.repository.StudentRepository
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler
 import org.springframework.stereotype.Controller
@@ -13,11 +15,15 @@ import javax.servlet.http.HttpServletResponse
 
 @Controller
 class LoginController {
-
+    @Autowired
     lateinit var studentRepository: StudentRepository
+    @Autowired
+    lateinit var adminRepository: AdminRepository
 
     @RequestMapping("/login-page.html", "/")
-    fun logMeIn(): String = "login-page"
+    fun logMeIn(): String {
+        return "login-page"
+    }
 
 
 //    @RequestMapping("/login-error.html")

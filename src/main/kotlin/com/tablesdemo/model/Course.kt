@@ -4,7 +4,7 @@ import java.io.Serializable
 import javax.persistence.*
 
 @Entity
-class Course(@Id @GeneratedValue(strategy = GenerationType.AUTO) val id: Long = 0, var name: String = "",
+data class Course(@Id @GeneratedValue(strategy = GenerationType.AUTO) val id: Long = 0, var name: String = "",
              var updated: Boolean, var section: String = "", @Embedded var syllabus: Syllabus) : Serializable {
 
 
