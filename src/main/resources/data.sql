@@ -20,7 +20,7 @@
 --     roleType int NOT NULL,
 --     PRIMARY KEY (adminID)
 -- );
-INSERT INTO Admin (fName, lName, login, password) VALUES ("Chengwei", "Lei", "clei", "password1", null );
+-- INSERT INTO Admin (fName, lName, login, password) VALUES ("Chengwei", "Lei", "clei", "password1", null );
 
 -- SELECT * FROM Admin;
 -- +---------+----------+-------+---------+---------------+----------+

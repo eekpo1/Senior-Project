@@ -72,18 +72,18 @@
 
     <div class="row justify-content-center">
         <div class="col-8">
-            <div  class="row" th:if="${param.error}">
+            <div  class="row justify-content-center" th:if="${param.error}">
                 Invalid username and password.
             </div>
 
-            <div  class="row" th:if="${param.logout}">
+            <div  class="row justify-content-center" th:if="${param.logout}">
                 You have been logged out.
             </div>
 
             <form th:action="@{/login-page.html}" method="post">
-                <div class="row"><label> User Name : <input type="text" name="username"/> </label></div>
-                <div class="row"><label> Password: <input type="password" name="password"/> </label></div>
-                <div class="row"><input type="submit" value="Sign In"/></div>
+                <div class="row justify-content-center"><label> User Name : <input type="text" name="username"/> </label></div>
+                <div class="row justify-content-center"><label> Password: <input type="password" name="password"/> </label></div>
+                <div class="row justify-content-center"><input type="submit" value="Sign In"/></div>
             </form>
         </div>
     </div>
