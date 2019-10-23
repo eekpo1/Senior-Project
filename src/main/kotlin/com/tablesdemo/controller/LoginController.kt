@@ -19,7 +19,7 @@ class LoginController {
 
     lateinit var studentRepository: StudentRepository
 
-    @RequestMapping("/login-page.html")
+    @RequestMapping("/login-page.html", "/")
     fun logMeIn(): String = "login-page"
 
 
@@ -29,8 +29,8 @@ class LoginController {
         return "login-error"
     }
 
-    @RequestMapping("/index", "/")
-    fun hello(): String = "hello"
+//    @RequestMapping("/index", "/")
+//    fun hello(): String = "hello"
 
     @RequestMapping(value = ["/logout"], method = [RequestMethod.GET])
     fun logOut(request: HttpServletRequest, response: HttpServletResponse): String {

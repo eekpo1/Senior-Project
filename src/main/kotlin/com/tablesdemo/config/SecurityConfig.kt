@@ -59,10 +59,11 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
                 .username("instructor").password(encoder.encode("passw0rd"))
                 .roles("INSTRUCTOR").build()
 
-
+        val clei: UserDetails = User.builder().username("clei").password(encoder.encode("password1"))
+                .roles("ADMIN").build()
 
         authenticationManagerBuilder.jdbcAuthentication().dataSource(dataSource).passwordEncoder(encoder)
-                .withUser(admin).withUser(user).withUser(instructor)
+                .withUser(admin).withUser(user).withUser(instructor).withUser(clei)
 //                .usersByUsernameQuery("SELECT username, password, enabled FROM users WHERE username=?")
 //                .authoritiesByUsernameQuery("SELECT username, role FROM users WHERE username=?")
 
@@ -81,7 +82,7 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
 
         http!!.authorizeRequests()
                 .mvcMatchers( "/api/**").hasRole("ADMIN").anyRequest().authenticated()
-                .mvcMatchers("/", "/resources/**", "/index").permitAll()
+                .mvcMatchers("/", "/index").permitAll()
                 .and().formLogin().loginPage("/login-page.html").defaultSuccessUrl("/home.html", true).failureUrl("/login-error.html").permitAll()
                 .and().logout().logoutSuccessUrl("/login-page.html")
                 .and().httpBasic()
