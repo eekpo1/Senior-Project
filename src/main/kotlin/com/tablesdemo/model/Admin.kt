@@ -18,6 +18,5 @@ class Admin(@Id @GeneratedValue(strategy = GenerationType.AUTO) val id: Long, va
     fun onPersist(): Unit {
         val encoder: PasswordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder()
         password = encoder.encode(password)
-
     }
 }
