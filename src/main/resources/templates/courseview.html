@@ -32,7 +32,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!--Professor Navbar-->
-                <div sec:authorize="hasRole('Instructor')">
+                <div sec:authorize="hasRole('INSTRUCTOR')">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
                             <a class="nav-link" href="./home.html">Home <span class="sr-only">(current)</span></a>
@@ -47,7 +47,7 @@
                 </div>
 
                 <!--Administrator Navbar-->
-                <div sec:authorize="hasRole('Admin')">
+                <div sec:authorize="hasRole('ADMIN')">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
                             <a class="nav-link" href="./home.html">Home <span class="sr-only">(current)</span></a>
@@ -69,7 +69,41 @@
     <!--Page Body-->
     <div class="row justify-content-center">
         <div class="col-8">
-            <h3>Insert courses table here</h3><br>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Course #</th>
+                        <th scope="col">Course Name</th>
+                        <th scope="col">View Course</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">$course.courseid</th>
+                        <td>$course.coursename</td>
+                        <td><button id="$course.courseid">View Course</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <br>
+            <br>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Student #</th>
+                        <th scope="col">Student Name</th>
+                        <th scope="col">Drop Student</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">$student.studentid</th>
+                        <td>$student.fname $student.lname</td>
+                        <td><button id="$student.studentid">Drop Student</button></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
