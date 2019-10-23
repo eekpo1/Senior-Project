@@ -27,46 +27,63 @@
 <body>
 
     <header>
-        <!--navbar-->
-        <div sec:authorize="hasRole('INSTRUCTOR')">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-                <a class="navbar-brand" href="#">CSUB</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="./home.html">Home <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./coursecreate.html">Create Course</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./courseview.html">View Courses</a>
-                            </li>
 
+        <!--navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="#">CSUB</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!--Professor Navbar-->
+                <div sec:authorize="hasRole('Instructor')">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="./home.html">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="./coursecreate.html">Create Course</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="./courseview.html">View Courses</a>
+                        </li>
                     </ul>
-                    <a class="btn btn-primary d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="#">Logout</a>
                 </div>
-            </nav>
-        </div>
+
+                <!--Administrator Navbar-->
+                <div sec:authorize="hasRole('Admin')">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="./home.html">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="./adminadd.html">Add Administrator</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="./studentadd.html">Add Student</a>
+                        </li>
+                    </ul>
+                </div>
+                <a class="btn btn-primary d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="#">Logout</a>
+            </div>
+
+        </nav>
     </header>
 
     <div class="row justify-content-center">
         <div class="col-8">
-            <div  class="row" th:if="${param.error}">
+            <div  class="row justify-content-center" th:if="${param.error}">
                 Invalid username and password.
             </div>
 
-            <div  class="row" th:if="${param.logout}">
+            <div  class="row justify-content-center" th:if="${param.logout}">
                 You have been logged out.
             </div>
 
             <form th:action="@{/login-page.html}" method="post">
-                <div class="row"><label> User Name : <input type="text" name="username"/> </label></div>
-                <div class="row"><label> Password: <input type="password" name="password"/> </label></div>
-                <div class="row"><input type="submit" value="Sign In"/></div>
+                <div class="row justify-content-center"><label> User Name : <input type="text" name="username"/> </label></div>
+                <div class="row justify-content-center"><label> Password: <input type="password" name="password"/> </label></div>
+                <div class="row justify-content-center"><input type="submit" value="Sign In"/></div>
             </form>
         </div>
     </div>
@@ -80,4 +97,9 @@
     </footer>
 
 </body>
+
+<!--Custom script-->
+<script src="../static/js/script.js" th:src="@{../static/js/script.js}"></script>
+
+
 </html>
