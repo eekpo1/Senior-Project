@@ -7,4 +7,4 @@ import org.springframework.stereotype.Repository
 
 @RepositoryRestResource
 @Repository
-interface RolesRepository : JpaRepository<Roles, String>
+interface RolesRepository : JpaRepository<Roles, Long>

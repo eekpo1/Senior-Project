@@ -20,12 +20,12 @@ class PasswordService {
 
     fun createPassword(): String {
         val builder = StringBuilder(16)
-        var size = random.nextInt(12, 15)
+        var size = random.nextInt(randomAllowedEntries.size) - 1
 
         while (builder.length < builder.capacity()) {
-            builder.append(randomAllowedEntries[random.nextInt(randomAllowedEntries.size)])
+            builder.append(randomAllowedEntries[random.nextInt(size)])
         }
-
+        println(builder.toString())
         return encoder.encode(builder.toString())
     }
 

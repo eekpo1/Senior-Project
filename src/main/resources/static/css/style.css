@@ -13,6 +13,10 @@ body {
     height: 100%;
 }
 
+div.stupidclass {
+    text-align: right;
+}
+
 #mainBody {
     /*background-image: url("../images/csublogo2.png");*/
     /*background-repeat: no-repeat;*/

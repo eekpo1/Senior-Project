@@ -46,14 +46,14 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
 
         val user: UserDetails = User.builder()
                 .username("user").password(encoder.encode("password"))
-                .roles("USER").build()
+                .roles("USER", "INSTRUCTOR").build()
 
         val instructor: UserDetails = User.builder()
                 .username("instructor").password(encoder.encode("passw0rd"))
                 .roles("INSTRUCTOR").build()
 
         val clei: UserDetails = User.builder().username("clei").password(encoder.encode("password1"))
-                .roles("ADMIN").build()
+                .roles("ADMIN", "INSTRUCTOR").build()
 
         authenticationManagerBuilder.jdbcAuthentication().dataSource(dataSource).passwordEncoder(encoder)
                 .withUser(admin).withUser(user).withUser(instructor).withUser(clei)
