@@ -20,22 +20,22 @@ if(document.getElementById("addAssignment")){
 function studentForm() {
     var newDiv = document.createElement('div');
     newDiv.innerHTML = `<div class="row">
-                            <div class="col">
-                                Student Information
-                            </div>
+                        <div class="col">
+                            Student Information
                         </div>
-                        <div class="row">
-                            <div class="col">
-                                <input type="text" class="form-control" placeholder="First name">
-                            </div>
-                            <div class="col">
-                                <input type="text" class="form-control" placeholder="Last name">
-                            </div>
-                            <div class="col">
-                                <input type="text" class="form-control" placeholder="Student ID number">
-                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="First name">
                         </div>
-                        <hr>`;
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Last name">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Student ID number">
+                        </div>
+                    </div>
+                    <hr>`;
     newDiv.setAttribute('id', 'student'+studentCount);
     document.getElementById('formBody').append(newDiv);
     studentCount++;
