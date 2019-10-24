@@ -23,3 +23,8 @@ div.stupidclass {
     /*background-size: contain;*/
     height: 100%;
 }
+
+d.logout {
+    position: absolute;
+    right: 10px;
+}
