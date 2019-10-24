@@ -41,39 +41,32 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!--Professor Navbar-->
-            <div sec:authorize="hasRole('INSTRUCTOR')">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="./home.html">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="./coursecreate.html">Create Course</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="./courseview.html">View Courses</a>
-                    </li>
-                </ul>
-            </div>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="./home.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li sec:authorize="hasRole('INSTRUCTOR')" class="nav-item active">
+                    <a class="nav-link" href="./coursecreate.html">Create Course</a>
+                </li>
+                <li sec:authorize="hasRole('INSTRUCTOR')" class="nav-item active">
+                    <a class="nav-link" href="./courseview.html">View Courses</a>
+                </li>
 
-            <!--Administrator Navbar-->
-            <div sec:authorize="hasRole('ADMIN')">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="./home.html">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="./adminadd.html">Add Administrator</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="./studentadd.html">Add Student</a>
-                    </li>
-                </ul>
-            </div>
-            <a class="btn btn-primary d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="#" data-th-href="@{/logout}">Logout</a>
+                <!--Administrator Navbar-->
+                <li sec:authorize="hasRole('ADMIN')" class="nav-item active">
+                    <a class="nav-link" href="./adminadd.html">Add Administrator</a>
+                </li>
+                <li sec:authorize="hasRole('ADMIN')" class="nav-item active">
+                    <a class="nav-link" href="./studentadd.html">Add Student</a>
+                </li>
+            </ul>
+            <a class="btn btn-primary d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="#"
+               data-th-href="@{/logout}">Logout</a>
         </div>
 
     </nav>
 </header>
+
 
 <!--Page Body-->
 <form action="#" data-th-action="@{/adminadd.html}" th:object="${admin}" method="post">

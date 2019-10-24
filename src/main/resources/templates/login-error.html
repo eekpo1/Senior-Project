@@ -6,6 +6,8 @@
 
 </head>
 <body data-th-with="httpStatus=${T(org.springframework.http.HttpStatus).valueOf(#response.status)}">
+
+
 <h1 data-th-text="|${httpStatus} - ${httpStatus.reasonPhrase|}">404</h1>
 <p data-th-utext="${errorMessage}">Error</p>
 <a href="login-page.html" data-th-href="@{/hello.html}">Back to Home Page</a>
