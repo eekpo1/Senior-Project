@@ -11,10 +11,10 @@
     <title>Welcome Professor</title>
 
     <!--CSS stylesheets-->
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
     <!--JavaScript... scripts-->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -69,11 +69,11 @@
                 </ul>
             </div>
 <!--            guys align this right on nav bar please thanks-->
-            <div class="">
+            <div class="logout">
                 <a class="btn btn-primary d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="#"
                    data-th-href="@{/logout}">Logout</a>
                 <div sec:authorize:="isAuthenticated()">
-                    Logged In: <span sec:authentication="name">Name Here</span>
+<!--                    Logged In: <span sec:authentication="name">Name Here</span>-->
                 </div>
             </div>
         </div>
