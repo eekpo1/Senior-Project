@@ -15,6 +15,4 @@ interface StudentRepository : JpaRepository<Student, Long> {
 
     fun findByUsername(usernname: String): Optional<Student>
 
-    fun findAllByCoursesIn(id: Long): List<Student>
-
 }
