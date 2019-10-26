@@ -71,9 +71,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">$course.courseid</th>
-                            <td>$course.coursename</td>
+                        <tr th:each="course: ${courses}">
+                            <th scope="row" data-th-text="${course.id}">$course.courseid</th>
+                            <td data-th-text="${course.name}+ ' - '+ ${course.section}">$course.coursename</td>
                             <td><button id="$course.courseid">View Course</button></td>
                         </tr>
                     </tbody>
