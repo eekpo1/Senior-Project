@@ -17,8 +17,9 @@ if(document.getElementById("addAssignment")){
 // on click, this function creates a new div element and populates it with the 
 // needed input fields, then appends the div to the main page.
 // used in the CreateCourse page
+// th:field="*{students[__${index.index}__].lastName}"
 function studentForm() {
-    var newDiv = document.createElement('div');
+    let newDiv = document.createElement('div');
     newDiv.innerHTML = `<div class="row">
                         <div class="col">
                             Student Information
@@ -29,7 +30,7 @@ function studentForm() {
                             <input type="text" class="form-control" placeholder="First name">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="Last name">
+                            <input type="text" name="lastName" class="form-control" placeholder="Last name">
                         </div>
                         <div class="col">
                             <input type="text" class="form-control" placeholder="Student ID number">
@@ -44,7 +45,7 @@ function studentForm() {
 // used on the CreateSyllabus page
 // nearlly identical to the studentForm function, only this one is for office hours
 function officeHours(){
-    var newDiv = document.createElement('div');
+    let newDiv = document.createElement('div');
     newDiv.innerHTML = `<div class="row">
                             <div class="col">
                                 <label>Office hours date</label>

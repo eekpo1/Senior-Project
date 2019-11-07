@@ -7,12 +7,11 @@ import java.util.concurrent.ThreadLocalRandom
 
 @Service
 class PasswordService {
-    val lengthRule = 12
 
-    val random = ThreadLocalRandom.current()
+    val random: ThreadLocalRandom = ThreadLocalRandom.current()
     val encoder: PasswordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder()
     val randomAllowedEntries =
-            arrayListOf<Char>('1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'A', 'a',
+            arrayListOf('1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'A', 'a',
                     'B', 'b', 'C', 'c', 'D', 'd', 'E', 'e', 'F', 'f', 'g', 'h', 'i', 'j',
                     'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
                     'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
@@ -20,7 +19,7 @@ class PasswordService {
 
     fun createPassword(): String {
         val builder = StringBuilder(16)
-        var size = random.nextInt(randomAllowedEntries.size) - 1
+        val size = random.nextInt(randomAllowedEntries.size) - 1
 
         while (builder.length < builder.capacity()) {
             builder.append(randomAllowedEntries[random.nextInt(size)])

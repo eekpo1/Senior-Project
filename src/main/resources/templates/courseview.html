@@ -13,7 +13,7 @@
     <!--CSS stylesheets-->
     <link rel="stylesheet" type="text/css" href="../static/css/style.css" data-th-href="@{/css/style.css}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
+
     <!--JavaScript... scripts-->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -34,21 +34,21 @@
             <!--Professor Navbar-->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="./home.html">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/home.html">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li sec:authorize="hasRole('INSTRUCTOR')" class="nav-item active">
-                    <a class="nav-link" href="./coursecreate.html">Create Course</a>
+                    <a class="nav-link" href="/coursecreate.html">Create Course</a>
                 </li>
                 <li sec:authorize="hasRole('INSTRUCTOR')" class="nav-item active">
-                    <a class="nav-link" href="./courseview.html">View Courses</a>
+                    <a class="nav-link" href="/courseview.html">View Courses</a>
                 </li>
 
                 <!--Administrator Navbar-->
                 <li sec:authorize="hasRole('ADMIN')" class="nav-item active">
-                    <a class="nav-link" href="./adminadd.html">Add Administrator</a>
+                    <a class="nav-link" href="/adminadd.html">Add Administrator</a>
                 </li>
                 <li sec:authorize="hasRole('ADMIN')" class="nav-item active">
-                    <a class="nav-link" href="./studentadd.html">Add Student</a>
+                    <a class="nav-link" href="/studentadd.html">Add Student</a>
                 </li>
             </ul>
             <a class="btn btn-primary d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="#"
@@ -71,10 +71,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="course: ${courses}">
+                        <tr th:each="course : ${courses}">
                             <th scope="row" data-th-text="${course.id}">$course.courseid</th>
                             <td data-th-text="${course.name}+ ' - '+ ${course.section}">$course.coursename</td>
-                            <td><button id="$course.courseid">View Course</button></td>
+                            <td>
+<!--                                <a href="#" data-th-href="@{'/courseview.html?course={id}'(id=${course.id})}">-->
+<!--                                    <button id="$course.courseid">View Course</button>-->
+<!--                                </a>-->
+                                <form action="#" data-th-action="@{'/courseview/course={id}'(id=${course.id})}"
+                                      method="get">
+                                    <input id="courseAndStudents" type="submit" value="View Course">
+                                </form>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -90,9 +98,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">$student.studentid</th>
-                            <td>$student.fname $student.lname</td>
+                        <tr data-th-each="student: ${roster}">
+                            <th scope="row" data-th-text="${student.id}">$student.studentid</th>
+                            <td data-th-text="${student.firstName} + ' ' + ${student.lastName}">$student.fname $student.lname</td>
                             <td><button id="$student.studentid">Drop Student</button></td>
                         </tr>
                     </tbody>
