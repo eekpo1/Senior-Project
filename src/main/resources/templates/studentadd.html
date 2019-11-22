@@ -68,35 +68,34 @@
 </header>
 
 <!--Page Body-->
-<div class="row justify-content-center" id="mainBody">
-    <div class="col-8">
-        <div id="student0">
+<form data-th-action="@{studentadd.html}" data-th-object="${student}" method="post">
+    <div class="row justify-content-center" id="mainBody">
+        <div class="col-8">
+            <div id="student0">
+                <div class="row">
+                    <div class="col">
+                        Student Information
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <input type="text" name="firstName" class="form-control" placeholder="First name">
+                    </div>
+                    <div class="col">
+                        <input type="text" name="lastName" class="form-control" placeholder="Last name">
+                    </div>
+                    <div class="col">
+                        <input type="text" name="id" class="form-control" placeholder="Student ID number">
+                    </div>
+                </div>
+                <hr>
+            </div>
 
 
-            <div class="row">
-                <div class="col">
-                    Student Information
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="First name">
-                </div>
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Last name">
-                </div>
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Student ID number">
-                </div>
-            </div>
-            <hr>
+            <button id="submitStudent">Add Student</button>
         </div>
-
-
-        <button id="submitStudent">Add Student</button>
     </div>
-</div>
-
+</form>
 <!--Footer Information-->
 <footer class="row justify-content-right">
     <div class="col-4">
