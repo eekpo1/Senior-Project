@@ -43,13 +43,17 @@ class AdminController {
 
     @PostMapping(value = ["/adminadd.html"])
     fun persistAdministrator(@Valid admin: Admin): String {
+        val password = passwordService.createPassword()
+        println(password)
         admin.firstName.capitalize()
         admin.lastName.capitalize()
         admin.username = admin.firstName[0].plus(admin.lastName).toLowerCase()
-        userRepository.save(User(admin.username, passwordService.createPassword(), true))
+        userRepository.save(User(admin.username, password.second, true))
         adminRepository.saveAndFlush(admin)
-        roleRepository.save(Roles(username = admin.firstName[0].plus(admin.lastName).toLowerCase(), authority = "ROLE_ADMIN"))
-        roleRepository.save(Roles(username = admin.firstName[0].plus(admin.lastName).toLowerCase(), authority = "ROLE_INSTRUCTOR"))
+        roleRepository.save(Roles(username = admin.firstName[0].plus(admin.lastName).toLowerCase(),
+                authority = "ROLE_ADMIN"))
+        roleRepository.save(Roles(username = admin.firstName[0].plus(admin.lastName).toLowerCase(),
+                authority = "ROLE_INSTRUCTOR"))
         return "redirect:/home.html"
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
+import java.security.Principal
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
@@ -21,8 +22,9 @@ class LoginController {
     lateinit var adminRepository: AdminRepository
 
     @RequestMapping("/login-page.html", "/")
-    fun logMeIn(): String {
-        return "login-page"
+    fun logMeIn(principal: Principal): String {
+        return if (SecurityContextHolder.getContext().authentication.isAuthenticated) "redirect:/home.html"
+        else "login-page"
     }
 
 

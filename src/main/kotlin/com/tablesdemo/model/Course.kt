@@ -10,22 +10,17 @@ data class Course(@Id @GeneratedValue(strategy = GenerationType.IDENTITY) val id
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "instructor")
-    lateinit var instructor: Admin
+    var instructor = Admin(firstName = "", lastName = "", username = "", schoolID = 0)
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = [CascadeType.PERSIST, CascadeType.MERGE])
+    @ManyToMany(fetch = FetchType.EAGER, cascade = [CascadeType.PERSIST, CascadeType.MERGE])
     @JoinTable (name = "students_in", joinColumns = [JoinColumn(name = "student_id")],
             inverseJoinColumns = [JoinColumn(name = "course_id")])
-    lateinit var roster: MutableSet<Student>
+    var roster: MutableSet<Student> = mutableSetOf()
 
     @PreUpdate
     fun checkUpdate(): Unit {
         // Difference between last update and current update
-        updated = syllabus?.lastUpdate!! < syllabus?.currentUpate
-    }
-
-    init {
-        instructor = Admin(firstName = "", lastName = "", username = "", schoolID = 0)
-        roster = mutableSetOf()
+        updated = syllabus?.lastUpdate!! < syllabus?.currentUpdate
     }
 
 

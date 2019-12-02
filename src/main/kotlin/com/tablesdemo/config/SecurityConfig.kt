@@ -1,6 +1,7 @@
 package com.tablesdemo.config
 
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.autoconfigure.web.ConditionalOnEnabledResourceChain
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
@@ -56,7 +57,7 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
                 .roles("ADMIN", "INSTRUCTOR").build()
 
         authenticationManagerBuilder.jdbcAuthentication().dataSource(dataSource).passwordEncoder(encoder)
-                .withUser(admin).withUser(user).withUser(instructor).withUser(clei)
+//                .withUser(admin).withUser(user).withUser(instructor).withUser(clei)
 //                .usersByUsernameQuery("SELECT username, password, enabled FROM users WHERE username=?")
 //                .authoritiesByUsernameQuery("SELECT username, role FROM users WHERE username=?")
 
@@ -75,13 +76,14 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
 //                .and().logout().permitAll()
 ////                .and().httpBasic()
 
+//        http!!.authorizeRequests().mvcMatchers("/api/**").hasRole("ADMIN").anyRequest().authenticated().and().httpBasic()
+
         http!!.authorizeRequests()
-                .mvcMatchers( "/api/**", "db").hasRole("ADMIN").anyRequest().authenticated()
+                .mvcMatchers( "/api/**", "db").permitAll().anyRequest().authenticated()
                 .mvcMatchers("/", "/index").permitAll()
                 .and().formLogin().loginPage("/login-page.html").defaultSuccessUrl("/home.html", true).permitAll(true)
                 .and().logout().clearAuthentication(true).logoutSuccessUrl("/login-page.html").deleteCookies("JSESSIONID")
                 .invalidateHttpSession(true).permitAll()
-//                .and().httpBasic()
 
         http.csrf().disable()
         http.headers().frameOptions().disable()

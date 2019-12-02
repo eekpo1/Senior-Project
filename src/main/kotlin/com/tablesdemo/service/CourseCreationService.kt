@@ -1,7 +1,6 @@
 package com.tablesdemo.service
 
 import com.tablesdemo.model.Course
-import com.tablesdemo.model.Roster
 import com.tablesdemo.model.Student
 import com.tablesdemo.model.Syllabus
 import com.tablesdemo.repository.AdminRepository
@@ -26,7 +25,7 @@ class CourseCreationService {
     @Autowired lateinit var adminRepository: AdminRepository
     @Autowired lateinit var passwordService: PasswordService
 
-    fun onCreate(course: Course, roster: Roster, principal: Principal) {
+    fun onCreate(course: Course, roster: List<Student>, principal: Principal) {
         /*
         We complete non nullable course details and relationships here
         Relationships: instructor : 1:1, roster: n:n
@@ -35,10 +34,12 @@ class CourseCreationService {
         course.syllabus = Syllabus()
         course.updated = true
 
-        roster.students.forEach {it.username = it.firstName[0] + it.lastName}
-        for (student in roster.students) {
+        roster.forEach {it.username = it.firstName[0] + it.lastName}
+        roster.forEach(::println)
+        for (student in roster) {
+            println(student.firstName)
             if (studentRepository.findByUsername(student.username!!).isPresent) {
-                course.roster.add(studentRepository.findByUsername(student.username!!).get())
+                course.roster.add(student)
             }
 
         }
