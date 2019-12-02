@@ -23,8 +23,9 @@ class LoginController {
 
     @RequestMapping("/login-page.html", "/")
     fun logMeIn(principal: Principal): String {
-        return if (SecurityContextHolder.getContext().authentication.isAuthenticated) "redirect:/home.html"
-        else "login-page"
+//        return if (SecurityContextHolder.getContext().authentication.isAuthenticated) "redirect:/home.html"
+//        else "login-page"
+        return "login-page"
     }
 
 
