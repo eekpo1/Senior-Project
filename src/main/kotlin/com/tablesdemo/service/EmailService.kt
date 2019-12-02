@@ -17,7 +17,7 @@ class EmailService {
 
 
     fun sendStudent(student: Student, pass: String,  to: String, subject: String) {
-        var template = "Welcome to WhatsDuem $school ${student.firstName} ${student.lastName}! Your Journey " +
+        var template = "Welcome to WhatsDue $school ${student.firstName} ${student.lastName}! Your Journey " +
                 "through university just got easier!" +
                 "Your details are: Username: ${student.username} Password: $pass. Upon login, You will " +
                 "only be able to see the link to the app and the ability to change your password, which you will be" +

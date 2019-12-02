@@ -2,8 +2,10 @@ package com.tablesdemo.controller
 
 import com.tablesdemo.model.Course
 import com.tablesdemo.model.Student
+import com.tablesdemo.model.SyllabusWrapper
 import com.tablesdemo.repository.CourseRepository
 import com.tablesdemo.service.CourseCreationService
+import com.tablesdemo.service.SyllabusService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
@@ -21,11 +23,16 @@ class ProfessorController {
     @Autowired
     lateinit var courseService: CourseCreationService
 
+    @Autowired lateinit var syllabusService: SyllabusService
+
     @Autowired
     lateinit var courseRepository: CourseRepository
 
     @RequestMapping("/createsyllabus.html")
-    fun createSyllabus(): String = "createsyllabus"
+    fun createSyllabus(course: Course, @Valid info: SyllabusWrapper): String {
+        syllabusService.createSyllabus(course, info)
+        return "redirect:/home.html"
+    }
 
     @GetMapping("/coursecreate.html")
     fun courseCreate(): String = "coursecreate"
@@ -37,7 +44,7 @@ class ProfessorController {
 //        roster.addAttribute("roster", students)
         courseService.onCreate(course, student, principal)
 //        courseService.onCreate(course, student.students, principal)
-        return "coursecreate"
+        return createSyllabus(course, SyllabusWrapper())
     }
 
     @GetMapping("courseview/course={id}")

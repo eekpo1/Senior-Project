@@ -20,7 +20,7 @@ data class Course(@Id @GeneratedValue(strategy = GenerationType.IDENTITY) val id
     @PreUpdate
     fun checkUpdate(): Unit {
         // Difference between last update and current update
-        updated = syllabus?.lastUpdate!! < syllabus?.currentUpate
+        updated = syllabus?.lastUpdate!! < syllabus?.currentUpdate
     }
 
 
