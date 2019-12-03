@@ -17,7 +17,7 @@ class HomeController {
     @Autowired
     lateinit var adminRepository: AdminRepository
 
-    @RequestMapping("/home.html", method = [RequestMethod.GET])
+    @RequestMapping("/home.html", "/", method = [RequestMethod.GET])
     fun home(model: Model, principal: Principal): String {
         model.addAttribute("loggedUser", adminRepository.findByUsername(principal.name))
         return "home"

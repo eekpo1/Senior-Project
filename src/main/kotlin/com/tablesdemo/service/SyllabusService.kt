@@ -20,21 +20,19 @@ class SyllabusService {
                 "Contact Phone Number: ${wrapper.phone}\n" +
                 "\n" +
                 "Office Hours:" +
-                "    • __\n" +
+                "    • $wrapper.\n" +
                 "    • __\n" +
                 "\n" +
                 "The meeting days are shown below for this class:\t" +
                 "\n" +
                 "    •  \n" +
                 "    •  \n" +
-                "    •  \n" +
-                "    •  \n" +
-                "    •  \n" +
-                "    •  \n" +
-                "    •  \n" +
-                "    •  \n" +
-                "    •  \n" +
                 "    • "
+        var syllabusCourse = courseRepository.findByNameAndSection(course.name, course.section)
+        syllabusCourse.syllabus!!.instructorInfo = template
+        courseRepository.saveAndFlush(syllabusCourse)
+        println(template)
+
     }
 
 

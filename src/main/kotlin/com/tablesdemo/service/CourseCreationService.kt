@@ -46,14 +46,15 @@ class CourseCreationService {
         courseRepository.saveAndFlush(course)
     }
 
-    fun onCreate(course: Course, student: Student, principal: Principal) {
+    fun onCreate(course: Course, student: Student, principal: Principal): Course {
         course.instructor = adminRepository.findByUsername(principal.name)
-        course.syllabus = Syllabus(LocalDate.now(), LocalDate.now(), "https://cs.csub.edu/~clei/teaching/19F4910.html")
+        course.syllabus = Syllabus(LocalDate.now(), LocalDate.now(), "")
         course.updated = true
         if (studentRepository.findByFirstNameAndLastName(student.firstName, student.lastName).isPresent) {
             course.roster.add(studentRepository.findByFirstNameAndLastName(student.firstName, student.lastName).get())
         }
         courseRepository.saveAndFlush(course)
+        return course
     }
 
 

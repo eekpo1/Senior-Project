@@ -22,7 +22,7 @@ class LoginController {
     lateinit var adminRepository: AdminRepository
 
     @RequestMapping("/login-page.html", "/")
-    fun logMeIn(principal: Principal): String {
+    fun logMeIn(): String {
 //        return if (SecurityContextHolder.getContext().authentication.isAuthenticated) "redirect:/home.html"
 //        else "login-page"
         return "login-page"

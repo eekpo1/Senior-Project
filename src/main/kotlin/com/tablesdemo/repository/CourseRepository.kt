@@ -7,4 +7,7 @@ import org.springframework.stereotype.Repository
 
 @Repository
 @RepositoryRestResource
-interface CourseRepository : JpaRepository<Course, Long>
+interface CourseRepository : JpaRepository<Course, Long> {
+    fun findByNameAndSection(name: String, section: String): Course
+
+}

@@ -28,9 +28,11 @@ class ProfessorController {
     @Autowired
     lateinit var courseRepository: CourseRepository
 
+    lateinit var tempCourse: Course
+
     @RequestMapping("/createsyllabus.html")
-    fun createSyllabus(course: Course, @Valid info: SyllabusWrapper): String {
-        syllabusService.createSyllabus(course, info)
+    fun createSyllabus(@Valid info: SyllabusWrapper): String {
+        syllabusService.createSyllabus(tempCourse, info)
         return "redirect:/home.html"
     }
 
@@ -42,9 +44,9 @@ class ProfessorController {
     fun create(@Valid course: Course, roster: Model, @Valid student: Student, principal: Principal, result: BindingResult): String {
 //        var students = Roster()
 //        roster.addAttribute("roster", students)
-        courseService.onCreate(course, student, principal)
+        tempCourse = courseService.onCreate(course, student, principal)
 //        courseService.onCreate(course, student.students, principal)
-        return createSyllabus(course, SyllabusWrapper())
+        return "createsyllabus"
     }
 
     @GetMapping("courseview/course={id}")
