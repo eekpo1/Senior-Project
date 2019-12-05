@@ -20,12 +20,12 @@ class SyllabusService {
                 "Contact Phone Number: ${wrapper.phone}\n" +
                 "\n" +
                 "Office Hours:" +
-                "    • ${wrapper.Assignments}\n" +
+                "    • ${wrapper.officeHrs} --------------- ${wrapper.start} - ${wrapper.end}\n" +
                 "    • __\n" +
                 "\n" +
                 "The meeting days are shown below for this class:\t" +
                 "\n" +
-                "    •  \n" +
+                "    •  ${wrapper.Assignments} ---------- ${wrapper.due}\n" +
                 "    •  \n" +
                 "    • "
         var syllabusCourse = courseRepository.findByNameAndSection(course.name, course.section)
