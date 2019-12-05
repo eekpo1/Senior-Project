@@ -4,7 +4,7 @@ import javax.persistence.*
 
 
 @Entity
-data class Admin(@Id @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Long = 0, var firstName: String,
+data class Admin(@Id @GeneratedValue(strategy = GenerationType.AUTO) var id: Long = 0, var firstName: String,
                  var lastName: String, @Column(name = "username", nullable = true) var username: String?, @Column(name = "school_id") var schoolID: Long) {
 
     @OneToMany(mappedBy = "instructor")

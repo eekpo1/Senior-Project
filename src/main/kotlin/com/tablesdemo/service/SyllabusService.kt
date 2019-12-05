@@ -20,7 +20,7 @@ class SyllabusService {
                 "Contact Phone Number: ${wrapper.phone}\n" +
                 "\n" +
                 "Office Hours:" +
-                "    • $wrapper.\n" +
+                "    • ${wrapper.Assignments.first()}\n" +
                 "    • __\n" +
                 "\n" +
                 "The meeting days are shown below for this class:\t" +

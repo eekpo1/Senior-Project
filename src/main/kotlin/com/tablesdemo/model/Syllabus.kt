@@ -8,4 +8,4 @@ import javax.persistence.Embeddable
 @Embeddable
 class Syllabus(@Column(name = "current") var lastUpdate: LocalDate? = LocalDate.now(),
                @Column(name = "last") var currentUpdate: LocalDate? = LocalDate.now(),
-               @Column(name = "info") var instructorInfo: String = "", @Column(name = "meetings") var meetDates: String = "")
+               @Column(name = "info", length = 500) var instructorInfo: String = "", @Column(name = "meetings", length = 500) var meetDates: String = "")
