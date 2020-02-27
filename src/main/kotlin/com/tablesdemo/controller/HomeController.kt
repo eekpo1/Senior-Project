@@ -24,8 +24,18 @@ class HomeController {
     }
 
     @RequestMapping("/tes.xml", method = [RequestMethod.GET])
-    fun home(): String {
+    fun tes(): String {
         return "tes"
+    }
+
+    @RequestMapping("/tes2.xml", method = [RequestMethod.GET])
+    fun tes2(): String {
+        return "tes2"
+    }
+
+    @RequestMapping("/tes3.xml", method = [RequestMethod.GET])
+    fun tes3(): String {
+        return "tes3"
     }
 
 

@@ -79,7 +79,7 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
 //        http!!.authorizeRequests().mvcMatchers("/api/**").hasRole("ADMIN").anyRequest().authenticated().and().httpBasic()
 
         http!!.authorizeRequests()
-                .mvcMatchers( "/api/**", "db", "/tes.xml").permitAll().anyRequest().authenticated()
+                .mvcMatchers( "/api/**", "db", "/tes.xml", "/tes2.xml", "/tes3.xml").permitAll().anyRequest().authenticated()
                 .mvcMatchers( "/index").permitAll()
                 .and().formLogin().loginPage("/login-page.html").defaultSuccessUrl("/home.html", true).permitAll(true)
                 .and().logout().clearAuthentication(true).logoutSuccessUrl("/login-page.html").deleteCookies("JSESSIONID")
